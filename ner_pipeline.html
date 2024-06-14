@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>NER Pipeline at the Academy of Sciences - Aryan Mistry</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Main -->
+        <div id="main">
+            <div class="inner">
+
+                <!-- Header -->
+                <header id="header">
+                    <a href="index.html" class="logo"><strong>NER Pipeline</strong> - Aryan Mistry</a>
+                    <ul class="icons">
+                        <li><a href="https://github.com/amistry001" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+                    </ul>
+                </header>
+
+                <!-- Content -->
+                <section>
+                    <header class="major">
+                        <h2>Quantifying Research Impact with Named Entity Recognition</h2>
+                    </header>
+                    <p>This was one of the main projects I completed as a Data Scientist intern at the California Academy of Sciences (CAS). In order to better quantify the institution’s global research impact, and therefore receive more substantial grants and funding, the Academy needed an efficient, effective way to detect identifiers or catalog numbers within published academic papers of specimens that they had loaned out to other institutions worldwide.</p>
+                    <p>I proposed a Named Entity Recognition (NER) model pipeline that utilized a fine-tuned instance of the LLM Mistral-7B to identify any institutional affiliation with CAS within a given research paper.</p>
+
+                    <h3>Methodology and Workflow:</h3>
+                    <h4>Data Collection</h4>
+                    <p>As training data, I began by collecting a corpus of "known good papers". These were papers within the Academy's database that were verified to have a positive affiliation. The content varied across disciplines to capture different affiliation styles (catalog numbers, specimen IDs, names of Academy faculty, etc.), ensuring our model could generalize well.</p>
+
+                    <h4>Data Annotation</h4>
+                    <p>I used Prodigy to manually annotate a subset of papers, marking the start and end of each affiliation instance, and attaching a relevant tag (e.g. specimen_id or catalog_number). Given the large volume of data, I also adopted a semi-supervised learning approach, using an initial model to generate pseudo-labels and then having these annotations verified by a team of volunteers with domain knowledge.</p>
+
+                    <h4>Model Selection and Fine-Tuning</h4>
+                    <p>I leveraged the open-source LLM Mistral-7B due to its strong baseline performance, and added a token classification head to handle the NER task. Fine-tuning was performed using QLoRA (Quantized Low-Rank Adaptation), which allowed for efficient adaptation of the model to our specific domain without retraining from scratch. This involved:</p>
+                    <ul>
+                        <li>Tokenizing the text with the model's built-in tokenizer</li>
+                        <li>Adding special tokens to mark entity boundaries.</li>
+                        <li>Using cross-entropy loss to measure the difference between predicted and true labels.</li>
+                        <li>Applying gradient clipping to prevent exploding gradients during training.</li>
+                    </ul>
+
+                    <h4>Model Evaluation</h4>
+                    <p>I evaluated the model using accuracy, precision, recall, and F1-score. Precision indicated how many of the identified citations were correct, while recall measured how many actual citations were identified. The F1-score provided a balanced measure, combining precision and recall. I found that the NER model improved upon the baseline heuristic model's accuracy by over 60%, with similar gains in precision, recall, and F1-score.</p>
+
+
+                    <h4>Post-Processing and Confidence Scores</h4>
+                    <p>The model’s output included extracted entities, their labels, and confidence scores, which were calculated using the softmax probabilities of the token classifications. For instance, a citation with tokens having probabilities [0.90, 0.85, 0.80, 0.88, 0.87] might have an average confidence score of 0.86. Aggregating the probabilities in this way allowed for filtering low-confidence predictions and improving the reliability of the results.</p>
+
+                    <h4>Model Output Examples</h4>
+                    <p>Here are some examples of the model's output:</p>
+                    <p><strong>Text from paper:</strong><br/>
+                    "The presence of a hard exoskeleton in specimen CASIZ4356 (on loan from CAS) suggests that the species belongs to the class arthropoda."</p>
+                    <p><strong>Model Output:</strong></p>
+                    <pre>
+ "entity": "CASIZ4356 (on loan from CAS)",
+ "label": "Museum_Specimen_Citation",
+ "confidence": 0.95
+                    </pre>
+                </section>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+
+</body>
+</html>

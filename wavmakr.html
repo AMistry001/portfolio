@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>WavMakr - Aryan Mistry</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+        .image-wrap {
+            float: right;
+            margin: 0 0 1em 1em;
+            width: 40%;
+        }
+        .image-wrap-short {
+            float: right;
+            margin: 0 0 0.5em 0.5em;
+            width: 40%;
+            height: auto;
+            max-height: 750px;
+        }
+        .logo {
+            display: block;
+            margin: 0 auto 1em auto;
+            width: 100px;
+        }
+    </style>
+</head>
+<body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Main -->
+        <div id="main">
+            <div class="inner">
+
+                <!-- Header -->
+                <header id="header">
+                    <a href="index.html" class="logo"><strong>WavMakr</strong> - Aryan Mistry</a>
+                    <img src="images/wav_logo.png" alt="WavMakr Logo" class="logo">
+                    <ul class="icons">
+                        <li><a href="https://github.com/amistry001" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+                    </ul>
+                </header>
+
+                <!-- Content -->
+                <section>
+                    <header class="major">
+                        <h2>WavMakr: AI Music Generation</h2>
+                    </header>
+                    <p>WavMakr is an innovative tool leveraging AI to convert text into music, enhancing creative processes for artists and content creators.</p>
+
+                    <h3>Meet The Team</h3>
+                    <ul>
+                        <li>Aryan Mistry - MLE, Google Cloud Engineer</li>
+                        <li>Ryan Bernstein - Field Investigator</li>
+                        <li>Shreyas Anil - Frontend Developer</li>
+                        <li>Evan Turkon - Backend Developer</li>
+                        <li>Justin Yang - UX/UI Researcher</li>
+                    </ul>
+
+                    <h3>The Problem</h3>
+                    <p>Music production is hard, and existing software is intimidating and inaccessible:</p>
+                    <ul>
+                        <li>User 1: “Learning how to use a Digital Audio Workstation is already time-consuming enough and learning all the other tooling takes even longer.”</li>
+                        <li>User 2: “I can hear the beat in my head, but translating that into something tangible on my computer is often frustrating.”</li>
+                        <li>User 3: “Digital Audio Workstations are way too expensive and any other products that I wanted to use, I also had to pay for.”</li>
+                    </ul>
+
+                    <h3>Product Demo</h3>
+                    <p>Our product allows users to enter a prompt, which may include a reference melody, and generates a short audio clip using the AudioCraft MusicGen model.</p>
+                    <p>GitHub: <a href="https://github.com/AMistry001/WavMakr/blob/main/README.md" target="_blank">WavMakr</a></p>
+                    <img src="images/wav_pipe.png" alt="WavMakr Model Pipeline" class="image-wrap">
+
+                    <h3>Technical Discussion</h3>
+                    <p>Here’s how our model works:</p>
+                    <ol>
+                        <li>User enters a prompt which may include a reference melody.</li>
+                        <li>Prompt and music sample are sent to the AudioCraft MusicGen Model.</li>
+                        <li>Generated audio is outputted.</li>
+                    </ol>
+
+                    <h3>The Model</h3>
+                    <p>MusicGen, engineered by Audiocraft:</p>
+                    <ul>
+                        <li>Trained with 10K high-quality music tracks, Shutterstock and Pond5 music data.</li>
+                        <li>We used a pre-trained version of MusicGen that has 1.5 billion parameters and can utilize uploaded melodies along with prompts to generate up to 15 seconds of music.</li>
+                        <li>Source: <a href="https://github.com/facebookresearch/audiocraft/blob/main/docs/MUSICGEN.md" target="_blank">Audiocraft MusicGen</a></li>
+                    </ul>
+                    <img src="images/audiocraft_dg.png" alt="Audiocraft Model Architecture" class="image-wrap-short">
+
+                    <h3>Target Users</h3>
+                    <p>WavMakr is ideal for:</p>
+                    <ul>
+                        <li>Amateur Musicians and Hobbyists</li>
+                        <li>Educational Institutions</li>
+                        <li>Podcasters and Content Creators</li>
+                        <li>Tech-savvy Music Enthusiasts</li>
+                    </ul>
+
+                    <h3>Competition & Potential Impact</h3>
+                    <p>Current Market: Lots of options, but in early development and rough.</p>
+                    <ul>
+                        <li>~60% of independent musicians use AI for music generation.</li>
+                        <li>Big music production software such as Ableton, FLStudio, etc.</li>
+                        <li>Up-and-coming generative AI such as Fadr AI.</li>
+
+                    <h3>Future Plans</h3>
+                    <p>Monetization: Subscription service or ads.</p>
+                    <p>Technical:</p>
+                    <ul>
+                        <li>Implement a recommender system for similar music.</li>
+                        <li>Optimization: More cost-effective, faster running time.</li>
+                        <li>Improvement of UI with A/B Testing.</li>
+                        <li>Fine-tuning of the model.</li>
+                    </ul>
+
+                    <h3>Conclusion & Key Takeaways</h3>
+                    <p>Our mission is to help users find musical inspiration with the power of AI. WavMakr allows users to input a prompt and get a musical sample as the output. Further functionality will be implemented as we raise more funding. This product will provide substantial benefits to aspiring music producers of all backgrounds and levels.</p>
+
+                    <p>Thank you for exploring WavMakr!</p>
+                </section>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+
+</body>
+</html>
